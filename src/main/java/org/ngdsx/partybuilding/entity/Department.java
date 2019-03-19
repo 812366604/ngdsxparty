@@ -1,6 +1,7 @@
 package org.ngdsx.partybuilding.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Department {
 
@@ -14,6 +15,14 @@ public class Department {
 	private Date ctime;
 	private int muserId;
 	private int cuserId;
+	//子节点
+	private List<Department> childNode;
+	public List<Department> getChildNode() {
+		return childNode;
+	}
+	public void setChildNode(List<Department> childNode) {
+		this.childNode = childNode;
+	}
 	public int getDepartmentId() {
 		return departmentId;
 	}

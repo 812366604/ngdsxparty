@@ -15,13 +15,13 @@ public class User {
 	private String userNativePlace;//籍费
 	private String userAddress;//通讯地址
 	private UserRankTitle userRankTitle;//职称
-	private UserWorkTitle userWorktitle;//职务
+	private UserWorkTitle userWorkTitle;//职务
 	private String userCompany;//工作单位
 	private String userPost;//邮编
 	private String userPhone;//手机
 	private String userEmail;//邮编
 	private String userResume;//个人简历
-	private Department branch;//所属支部
+	private Department department;//所属支部
 	private String userLoginIp;//最近一次登录ip
 	private String userNpc;//人大政协任职情况
 	private String userCheck;//是否允许登录
@@ -92,11 +92,11 @@ public class User {
 	public void setUserRankTitle(UserRankTitle userRankTitle) {
 		this.userRankTitle = userRankTitle;
 	}
-	public UserWorkTitle getUserWorktitle() {
-		return userWorktitle;
+	public UserWorkTitle getUserWorkTitle() {
+		return userWorkTitle;
 	}
-	public void setUserWorktitle(UserWorkTitle userWorktitle) {
-		this.userWorktitle = userWorktitle;
+	public void setUserWorktitle(UserWorkTitle userWorkTitle) {
+		this.userWorkTitle = userWorkTitle;
 	}
 	public String getUserCompany() {
 		return userCompany;
@@ -128,11 +128,11 @@ public class User {
 	public void setUserResume(String userResume) {
 		this.userResume = userResume;
 	}
-	public Department getBranch() {
-		return branch;
+	public Department getDepartment() {
+		return department;
 	}
-	public void setBranch(Department branch) {
-		this.branch = branch;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 	public String getUserLoginIp() {
 		return userLoginIp;
@@ -157,8 +157,5 @@ public class User {
 	}
 	public void setUserLevel(int userLevel) {
 		this.userLevel = userLevel;
-	}
-	
-	
-	
+	}	
 }
