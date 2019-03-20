@@ -1,28 +1,19 @@
 package org.ngdsx.partybuilding.entity;
 
 import java.util.Date;
-import java.util.List;
 
 public class Department {
 
 	private int departmentId;
 	private String departmentName;
-	private String departmentLevel; //级别字符串
-	private int parentId; //父级主键id
+	private String departmentLevel; //整个层级
 	private int seq; //排序号
+	private String remark;
+	private int parentId; //父级主键id
 	private String departmentTemplate; //部门模板
-	private Date mtime;
-	private Date ctime;
-	private int muserId;
-	private int cuserId;
-	//子节点
-	private List<Department> childNode;
-	public List<Department> getChildNode() {
-		return childNode;
-	}
-	public void setChildNode(List<Department> childNode) {
-		this.childNode = childNode;
-	}
+	private String operator;
+	private Date operatorTime;
+	private String operatorIp;
 	public int getDepartmentId() {
 		return departmentId;
 	}
@@ -41,41 +32,23 @@ public class Department {
 	public void setDepartmentLevel(String departmentLevel) {
 		this.departmentLevel = departmentLevel;
 	}
-	public int getParentId() {
-		return parentId;
-	}
-	public void setParentId(int parentId) {
-		this.parentId = parentId;
-	}
 	public int getSeq() {
 		return seq;
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-	public Date getMtime() {
-		return mtime;
+	public String getRemark() {
+		return remark;
 	}
-	public void setMtime(Date mtime) {
-		this.mtime = mtime;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
-	public Date getCtime() {
-		return ctime;
+	public int getParentId() {
+		return parentId;
 	}
-	public void setCtime(Date ctime) {
-		this.ctime = ctime;
-	}
-	public int getMuserId() {
-		return muserId;
-	}
-	public void setMuserId(int muserId) {
-		this.muserId = muserId;
-	}
-	public int getCuserId() {
-		return cuserId;
-	}
-	public void setCuserId(int cuserId) {
-		this.cuserId = cuserId;
+	public void setParentId(int parentId) {
+		this.parentId = parentId;
 	}
 	public String getDepartmentTemplate() {
 		return departmentTemplate;
@@ -83,4 +56,23 @@ public class Department {
 	public void setDepartmentTemplate(String departmentTemplate) {
 		this.departmentTemplate = departmentTemplate;
 	}
+	public String getOperator() {
+		return operator;
+	}
+	public void setOperator(String operator) {
+		this.operator = operator;
+	}
+	public Date getOperatorTime() {
+		return operatorTime;
+	}
+	public void setOperatorTime(Date operatorTime) {
+		this.operatorTime = operatorTime;
+	}
+	public String getOperatorIp() {
+		return operatorIp;
+	}
+	public void setOperatorIp(String operatorIp) {
+		this.operatorIp = operatorIp;
+	}
+	
 }

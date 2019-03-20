@@ -24,8 +24,10 @@ public class User {
 	private Department department;//所属支部
 	private String userLoginIp;//最近一次登录ip
 	private String userNpc;//人大政协任职情况
-	private String userCheck;//是否允许登录
-	private int userLevel;//个人权限
+	private String userCheck;//是否允许登录	
+	private String operator;
+	private String operatorTime;
+	private String operatorIp;
 	public int getUserId() {
 		return userId;
 	}
@@ -152,10 +154,26 @@ public class User {
 	public void setUserCheck(String userCheck) {
 		this.userCheck = userCheck;
 	}
-	public int getUserLevel() {
-		return userLevel;
+	public String getOperator() {
+		return operator;
 	}
-	public void setUserLevel(int userLevel) {
-		this.userLevel = userLevel;
-	}	
+	public void setOperator(String operator) {
+		this.operator = operator;
+	}
+	public String getOperatorTime() {
+		return operatorTime;
+	}
+	public void setOperatorTime(String operatorTime) {
+		this.operatorTime = operatorTime;
+	}
+	public String getOperatorIp() {
+		return operatorIp;
+	}
+	public void setOperatorIp(String operatorIp) {
+		this.operatorIp = operatorIp;
+	}
+	public void setUserWorkTitle(UserWorkTitle userWorkTitle) {
+		this.userWorkTitle = userWorkTitle;
+	}
+		
 }
