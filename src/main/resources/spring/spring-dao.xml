@@ -71,7 +71,7 @@
 	
 	<!-- 5.druid -->
     <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
-    	<property name="slowSqlMills" value="3000" />
+    	<property name="slowSqlMillis" value="3000" />
     	<property name="logSlowSql" value="true" />
     	<property name="mergeSql" value="true" />
     </bean>
