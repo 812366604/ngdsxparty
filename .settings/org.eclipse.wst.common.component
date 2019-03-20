@@ -7,6 +7,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources/spring"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources/mapper"/>
         <property name="java-output-path" value="/partybuilding/target/classes"/>
-        <property name="context-root" value="myo2o"/>
+        <property name="context-root" value="ngdsxparty"/>
     </wb-module>
 </project-modules>
