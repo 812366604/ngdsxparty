@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ngdsx.partybuilding.dao.UserRankTitleMapper">
+  <resultMap id="BaseResultMap" type="org.ngdsx.partybuilding.entity.UserRankTitle">
+    <id column="user_rank_title_id" jdbcType="INTEGER" property="userRankTitleId" />
+    <result column="user_rank_title_name" jdbcType="VARCHAR" property="userRankTitleName" />
+    <result column="user_rank_title_parent_id" jdbcType="INTEGER" property="userRankTitleParentId" />
+    <result column="user_rank_title_level" jdbcType="INTEGER" property="userRankTitleLevel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_rank_title_id, user_rank_title_name, user_rank_title_parent_id, user_rank_title_level
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user_rank_title
+    where user_rank_title_id = #{userRankTitleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_user_rank_title
+    where user_rank_title_id = #{userRankTitleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.ngdsx.partybuilding.entity.UserRankTitle">
+    insert into tb_user_rank_title (user_rank_title_id, user_rank_title_name, 
+      user_rank_title_parent_id, user_rank_title_level
+      )
+    values (#{userRankTitleId,jdbcType=INTEGER}, #{userRankTitleName,jdbcType=VARCHAR}, 
+      #{userRankTitleParentId,jdbcType=INTEGER}, #{userRankTitleLevel,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.ngdsx.partybuilding.entity.UserRankTitle">
+    insert into tb_user_rank_title
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userRankTitleId != null">
+        user_rank_title_id,
+      </if>
+      <if test="userRankTitleName != null">
+        user_rank_title_name,
+      </if>
+      <if test="userRankTitleParentId != null">
+        user_rank_title_parent_id,
+      </if>
+      <if test="userRankTitleLevel != null">
+        user_rank_title_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userRankTitleId != null">
+        #{userRankTitleId,jdbcType=INTEGER},
+      </if>
+      <if test="userRankTitleName != null">
+        #{userRankTitleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userRankTitleParentId != null">
+        #{userRankTitleParentId,jdbcType=INTEGER},
+      </if>
+      <if test="userRankTitleLevel != null">
+        #{userRankTitleLevel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ngdsx.partybuilding.entity.UserRankTitle">
+    update tb_user_rank_title
+    <set>
+      <if test="userRankTitleName != null">
+        user_rank_title_name = #{userRankTitleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userRankTitleParentId != null">
+        user_rank_title_parent_id = #{userRankTitleParentId,jdbcType=INTEGER},
+      </if>
+      <if test="userRankTitleLevel != null">
+        user_rank_title_level = #{userRankTitleLevel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_rank_title_id = #{userRankTitleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ngdsx.partybuilding.entity.UserRankTitle">
+    update tb_user_rank_title
+    set user_rank_title_name = #{userRankTitleName,jdbcType=VARCHAR},
+      user_rank_title_parent_id = #{userRankTitleParentId,jdbcType=INTEGER},
+      user_rank_title_level = #{userRankTitleLevel,jdbcType=INTEGER}
+    where user_rank_title_id = #{userRankTitleId,jdbcType=INTEGER}
+  </update>
+</mapper>
