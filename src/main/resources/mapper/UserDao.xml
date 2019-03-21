@@ -13,11 +13,11 @@
 		sys_user(user_name,user_pwd,user_sex,user_img,user_education,
 		user_degree,create_party_time,user_native_place,user_address,
 		user_rank_title,user_work_title,user_company,user_post,user_phone,
-		user_email,user_resume,department_id,user_login_ip,user_npc,user_check,user_level)
+		user_email,user_resume,department_id,user_login_ip,user_npc,user_check)
 		VALUES(#{userName},#{userPwd},#{userSex},#{userImg},#{userEducation},
 		#{userDegree},#{createPartyTime},#{userNativePlace},#{userAddress},
 		#{userRankTitle.userRankTitleId},#{userWorkTitle.userWorkTitleId},#{userCompany},#{userPost},#{userPhone},
-		#{userEmail},#{userResume},#{department.departmentId},#{userLoginIp},#{userNpc},#{userCheck},#{userLevel})
+		#{userEmail},#{userResume},#{department.departmentId},#{userLoginIp},#{userNpc},#{userCheck})
 	</insert>
 	<update id="updateUser"
 		parameterType="org.ngdsx.partybuilding.entity.User">
@@ -43,7 +43,7 @@
 			<if test="userLoginIp != null">user_login_ip = #{userLoginIp},</if>
 			<if test="userNpc != null">user_npc = #{userNpc},</if>
 			<if test="userCheck != null">user_check = #{userCheck},</if>
-			<if test="userLevel != null">user_level = #{userLevel}</if>
+			<!-- <if test="userLevel != null">user_level = #{userLevel}</if> -->
 		</set>
 		where user_id=#{userId}
 	</update>
