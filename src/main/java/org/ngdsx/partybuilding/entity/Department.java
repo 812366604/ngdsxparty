@@ -1,19 +1,23 @@
 package org.ngdsx.partybuilding.entity;
 
 import java.util.Date;
-
+/**
+ * 部门架构表
+ * @author jaogun
+ *
+ */
 public class Department {
 
 	private int departmentId;
-	private String departmentName;
-	private String departmentLevel; //整个层级
-	private int seq; //排序号
-	private String remark;
+	private String departmentName;//部门名称
 	private int parentId; //父级主键id
+	private String departmentLevel; //部门层级
+	private int seq; //在当前层级的排序
+	private String remark;//备注
 	private String departmentTemplate; //部门模板
-	private String operator;
-	private Date operatorTime;
-	private String operatorIp;
+	private String operator;//操作者
+	private Date operatorTime;//操作时间
+	private String operatorIp;//最后操作ip
 	public int getDepartmentId() {
 		return departmentId;
 	}
