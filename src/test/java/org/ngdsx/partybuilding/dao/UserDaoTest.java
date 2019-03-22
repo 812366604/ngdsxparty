@@ -11,14 +11,13 @@ import org.ngdsx.partybuilding.BaseTest;
 import org.ngdsx.partybuilding.entity.Department;
 import org.ngdsx.partybuilding.entity.User;
 import org.ngdsx.partybuilding.entity.UserRankTitle;
-import org.ngdsx.partybuilding.entity.UserWorkTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserDaoTest extends BaseTest{
 
 	@Autowired
-	private UserDao userDao;
+	private UserMapper userDao;
 	
 	@Test
 	public void testinsertUser() throws Exception{
@@ -28,9 +27,6 @@ public class UserDaoTest extends BaseTest{
 		userRankTitle.setUserRankTitleLevel(0);
 		userRankTitle.setUserRankTitleName("中级");
 		userRankTitle.setUserRankTitleParentId(1);
-		UserWorkTitle userWorkTitle = new UserWorkTitle();
-		userWorkTitle.setUserWorkTitleId(1);
-		userWorkTitle.setUserWorkTitleName("主任");
 		Department department = new Department();
 		department.setDepartmentId(1);
 		user.setUserName("张三");
@@ -42,18 +38,15 @@ public class UserDaoTest extends BaseTest{
 		user.setCreatePartyTime(new Date());
 		user.setUserNativePlace("山西太原");
 		user.setUserAddress("山西省太原市");
-		user.setUserRankTitle(userRankTitle);
-		user.setUserWorktitle(userWorkTitle);
 		user.setUserCompany("山西公司 ");
 		user.setUserPost("030000");
 		user.setUserPhone("13003510000");
 		user.setUserEmail("0351@qq.com");
 		user.setUserResume("个人简历");
-		user.setDepartment(department);
 		user.setUserLoginIp("192.168.1.1");
 		user.setUserNpc("是");
 		user.setUserCheck("是");		
-		int result = userDao.insertUser(user);
+		int result = userDao.insert(user);
 		assertEquals(1,result);
 	}
 }

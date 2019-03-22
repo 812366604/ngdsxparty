@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @ToString
-public class DeptParam {
+public class DepartmentParam {
 
     private Integer id;
 

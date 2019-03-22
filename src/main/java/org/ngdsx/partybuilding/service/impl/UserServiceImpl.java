@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.ngdsx.partybuilding.dao.UserDao;
+import org.ngdsx.partybuilding.dao.UserMapper;
 import org.ngdsx.partybuilding.dto.UserExecution;
 import org.ngdsx.partybuilding.entity.User;
 import org.ngdsx.partybuilding.enums.UserStateEnum;
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private JedisUtil.Keys jedisKeys;
 	@Autowired
-	private UserDao userDao;
+	private UserMapper userDao;
 	
 	private static String USERLISTKEY = "userlist";
 	@Override
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 		List<User> userList = null;
 		ObjectMapper mapper = new ObjectMapper();
 		if (!jedisKeys.exists(key)) {
-			userList = userDao.queryUser();
+//			userList = userDao.queryUser();
 			String jsonString = mapper.writeValueAsString(userList);
 			jedisStrings.set(key, jsonString);
 		} else {
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService{
 		if (user.getUserName() != null && !"".equals(user.getUserName())) {
 			user.setCreatePartyTime(new Date());			
 			try {
-				int effectedNum = userDao.insertUser(user);
+				int effectedNum = userDao.insert(user);
 				if(effectedNum > 0) {
 					String key = USERLISTKEY;
 					if(jedisKeys.exists(key)) {
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		if("".equals(user.getUserId()) && user.getUserId() > 0) {
 			try {
-				int effectedNum = userDao.updateUser(user);
+				int effectedNum = userDao.updateByPrimaryKey(user);
 				if(effectedNum > 0) {
 					String key = USERLISTKEY;
 					if(jedisKeys.exists(key)) {
