@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ngdsx.partybuilding.dao.LogMapper">
+  <resultMap id="BaseResultMap" type="org.ngdsx.partybuilding.entity.Log">
+    <id column="log_id" jdbcType="INTEGER" property="logId" />
+    <result column="log_type" jdbcType="INTEGER" property="logType" />
+    <result column="target_id" jdbcType="INTEGER" property="targetId" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="operator_time" jdbcType="TIMESTAMP" property="operatorTime" />
+    <result column="operator_ip" jdbcType="VARCHAR" property="operatorIp" />
+    <result column="log_status" jdbcType="INTEGER" property="logStatus" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.ngdsx.partybuilding.entity.LogWithBLOBs">
+    <result column="old_value" jdbcType="LONGVARCHAR" property="oldValue" />
+    <result column="new_value" jdbcType="LONGVARCHAR" property="newValue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    log_id, log_type, target_id, operator, operator_time, operator_ip, log_status
+  </sql>
+  <sql id="Blob_Column_List">
+    old_value, new_value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sys_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.ngdsx.partybuilding.entity.LogWithBLOBs">
+    insert into sys_log (log_id, log_type, target_id, 
+      operator, operator_time, operator_ip, 
+      log_status, old_value, new_value
+      )
+    values (#{logId,jdbcType=INTEGER}, #{logType,jdbcType=INTEGER}, #{targetId,jdbcType=INTEGER}, 
+      #{operator,jdbcType=VARCHAR}, #{operatorTime,jdbcType=TIMESTAMP}, #{operatorIp,jdbcType=VARCHAR}, 
+      #{logStatus,jdbcType=INTEGER}, #{oldValue,jdbcType=LONGVARCHAR}, #{newValue,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.ngdsx.partybuilding.entity.LogWithBLOBs">
+    insert into sys_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        log_id,
+      </if>
+      <if test="logType != null">
+        log_type,
+      </if>
+      <if test="targetId != null">
+        target_id,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="operatorTime != null">
+        operator_time,
+      </if>
+      <if test="operatorIp != null">
+        operator_ip,
+      </if>
+      <if test="logStatus != null">
+        log_status,
+      </if>
+      <if test="oldValue != null">
+        old_value,
+      </if>
+      <if test="newValue != null">
+        new_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=INTEGER},
+      </if>
+      <if test="targetId != null">
+        #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logStatus != null">
+        #{logStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oldValue != null">
+        #{oldValue,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="newValue != null">
+        #{newValue,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ngdsx.partybuilding.entity.LogWithBLOBs">
+    update sys_log
+    <set>
+      <if test="logType != null">
+        log_type = #{logType,jdbcType=INTEGER},
+      </if>
+      <if test="targetId != null">
+        target_id = #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        operator_ip = #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logStatus != null">
+        log_status = #{logStatus,jdbcType=INTEGER},
+      </if>
+      <if test="oldValue != null">
+        old_value = #{oldValue,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="newValue != null">
+        new_value = #{newValue,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.ngdsx.partybuilding.entity.LogWithBLOBs">
+    update sys_log
+    set log_type = #{logType,jdbcType=INTEGER},
+      target_id = #{targetId,jdbcType=INTEGER},
+      operator = #{operator,jdbcType=VARCHAR},
+      operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      operator_ip = #{operatorIp,jdbcType=VARCHAR},
+      log_status = #{logStatus,jdbcType=INTEGER},
+      old_value = #{oldValue,jdbcType=LONGVARCHAR},
+      new_value = #{newValue,jdbcType=LONGVARCHAR}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ngdsx.partybuilding.entity.Log">
+    update sys_log
+    set log_type = #{logType,jdbcType=INTEGER},
+      target_id = #{targetId,jdbcType=INTEGER},
+      operator = #{operator,jdbcType=VARCHAR},
+      operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      operator_ip = #{operatorIp,jdbcType=VARCHAR},
+      log_status = #{logStatus,jdbcType=INTEGER}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+</mapper>

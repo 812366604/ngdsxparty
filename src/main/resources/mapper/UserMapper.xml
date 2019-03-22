@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ngdsx.partybuilding.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="org.ngdsx.partybuilding.entity.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_sex" jdbcType="CHAR" property="userSex" />
+    <result column="user_img" jdbcType="VARCHAR" property="userImg" />
+    <result column="user_education" jdbcType="INTEGER" property="userEducation" />
+    <result column="user_degree" jdbcType="INTEGER" property="userDegree" />
+    <result column="create_party_time" jdbcType="DATE" property="createPartyTime" />
+    <result column="user_native_place" jdbcType="VARCHAR" property="userNativePlace" />
+    <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
+    <result column="user_rank_title" jdbcType="INTEGER" property="userRankTitle" />
+    <result column="user_work_title" jdbcType="INTEGER" property="userWorkTitle" />
+    <result column="user_company" jdbcType="VARCHAR" property="userCompany" />
+    <result column="user_post" jdbcType="VARCHAR" property="userPost" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_resume" jdbcType="VARCHAR" property="userResume" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="user_login_ip" jdbcType="VARCHAR" property="userLoginIp" />
+    <result column="user_npc" jdbcType="VARCHAR" property="userNpc" />
+    <result column="user_check" jdbcType="CHAR" property="userCheck" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="operator_time" jdbcType="TIMESTAMP" property="operatorTime" />
+    <result column="operator_ip" jdbcType="VARCHAR" property="operatorIp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_name, user_pwd, user_sex, user_img, user_education, user_degree, create_party_time, 
+    user_native_place, user_address, user_rank_title, user_work_title, user_company, 
+    user_post, user_phone, user_email, user_resume, department_id, user_login_ip, user_npc, 
+    user_check, operator, operator_time, operator_ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.ngdsx.partybuilding.entity.User">
+    insert into sys_user (user_id, user_name, user_pwd, 
+      user_sex, user_img, user_education, 
+      user_degree, create_party_time, user_native_place, 
+      user_address, user_rank_title, user_work_title, 
+      user_company, user_post, user_phone, 
+      user_email, user_resume, department_id, 
+      user_login_ip, user_npc, user_check, 
+      operator, operator_time, operator_ip
+      )
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+      #{userSex,jdbcType=CHAR}, #{userImg,jdbcType=VARCHAR}, #{userEducation,jdbcType=INTEGER}, 
+      #{userDegree,jdbcType=INTEGER}, #{createPartyTime,jdbcType=DATE}, #{userNativePlace,jdbcType=VARCHAR}, 
+      #{userAddress,jdbcType=VARCHAR}, #{userRankTitle,jdbcType=INTEGER}, #{userWorkTitle,jdbcType=INTEGER}, 
+      #{userCompany,jdbcType=VARCHAR}, #{userPost,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{userResume,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER}, 
+      #{userLoginIp,jdbcType=VARCHAR}, #{userNpc,jdbcType=VARCHAR}, #{userCheck,jdbcType=CHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{operatorTime,jdbcType=TIMESTAMP}, #{operatorIp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.ngdsx.partybuilding.entity.User">
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPwd != null">
+        user_pwd,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="userImg != null">
+        user_img,
+      </if>
+      <if test="userEducation != null">
+        user_education,
+      </if>
+      <if test="userDegree != null">
+        user_degree,
+      </if>
+      <if test="createPartyTime != null">
+        create_party_time,
+      </if>
+      <if test="userNativePlace != null">
+        user_native_place,
+      </if>
+      <if test="userAddress != null">
+        user_address,
+      </if>
+      <if test="userRankTitle != null">
+        user_rank_title,
+      </if>
+      <if test="userWorkTitle != null">
+        user_work_title,
+      </if>
+      <if test="userCompany != null">
+        user_company,
+      </if>
+      <if test="userPost != null">
+        user_post,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="userEmail != null">
+        user_email,
+      </if>
+      <if test="userResume != null">
+        user_resume,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="userLoginIp != null">
+        user_login_ip,
+      </if>
+      <if test="userNpc != null">
+        user_npc,
+      </if>
+      <if test="userCheck != null">
+        user_check,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="operatorTime != null">
+        operator_time,
+      </if>
+      <if test="operatorIp != null">
+        operator_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userImg != null">
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userEducation != null">
+        #{userEducation,jdbcType=INTEGER},
+      </if>
+      <if test="userDegree != null">
+        #{userDegree,jdbcType=INTEGER},
+      </if>
+      <if test="createPartyTime != null">
+        #{createPartyTime,jdbcType=DATE},
+      </if>
+      <if test="userNativePlace != null">
+        #{userNativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null">
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userRankTitle != null">
+        #{userRankTitle,jdbcType=INTEGER},
+      </if>
+      <if test="userWorkTitle != null">
+        #{userWorkTitle,jdbcType=INTEGER},
+      </if>
+      <if test="userCompany != null">
+        #{userCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="userPost != null">
+        #{userPost,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userResume != null">
+        #{userResume,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="userLoginIp != null">
+        #{userLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userNpc != null">
+        #{userNpc,jdbcType=VARCHAR},
+      </if>
+      <if test="userCheck != null">
+        #{userCheck,jdbcType=CHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ngdsx.partybuilding.entity.User">
+    update sys_user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userImg != null">
+        user_img = #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userEducation != null">
+        user_education = #{userEducation,jdbcType=INTEGER},
+      </if>
+      <if test="userDegree != null">
+        user_degree = #{userDegree,jdbcType=INTEGER},
+      </if>
+      <if test="createPartyTime != null">
+        create_party_time = #{createPartyTime,jdbcType=DATE},
+      </if>
+      <if test="userNativePlace != null">
+        user_native_place = #{userNativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null">
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userRankTitle != null">
+        user_rank_title = #{userRankTitle,jdbcType=INTEGER},
+      </if>
+      <if test="userWorkTitle != null">
+        user_work_title = #{userWorkTitle,jdbcType=INTEGER},
+      </if>
+      <if test="userCompany != null">
+        user_company = #{userCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="userPost != null">
+        user_post = #{userPost,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userResume != null">
+        user_resume = #{userResume,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="userLoginIp != null">
+        user_login_ip = #{userLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userNpc != null">
+        user_npc = #{userNpc,jdbcType=VARCHAR},
+      </if>
+      <if test="userCheck != null">
+        user_check = #{userCheck,jdbcType=CHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        operator_ip = #{operatorIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ngdsx.partybuilding.entity.User">
+    update sys_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=CHAR},
+      user_img = #{userImg,jdbcType=VARCHAR},
+      user_education = #{userEducation,jdbcType=INTEGER},
+      user_degree = #{userDegree,jdbcType=INTEGER},
+      create_party_time = #{createPartyTime,jdbcType=DATE},
+      user_native_place = #{userNativePlace,jdbcType=VARCHAR},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_rank_title = #{userRankTitle,jdbcType=INTEGER},
+      user_work_title = #{userWorkTitle,jdbcType=INTEGER},
+      user_company = #{userCompany,jdbcType=VARCHAR},
+      user_post = #{userPost,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_resume = #{userResume,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      user_login_ip = #{userLoginIp,jdbcType=VARCHAR},
+      user_npc = #{userNpc,jdbcType=VARCHAR},
+      user_check = #{userCheck,jdbcType=CHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      operator_ip = #{operatorIp,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

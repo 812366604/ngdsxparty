@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ngdsx.partybuilding.dao.AclModuleMapper">
+  <resultMap id="BaseResultMap" type="org.ngdsx.partybuilding.entity.AclModule">
+    <result column="acl_module_id" jdbcType="INTEGER" property="aclModuleId" />
+    <result column="acl_module_name" jdbcType="VARCHAR" property="aclModuleName" />
+    <result column="acl_module_parent_id" jdbcType="INTEGER" property="aclModuleParentId" />
+    <result column="acl_module_level" jdbcType="VARCHAR" property="aclModuleLevel" />
+    <result column="acl_module_status" jdbcType="INTEGER" property="aclModuleStatus" />
+    <result column="acl_module_seq" jdbcType="INTEGER" property="aclModuleSeq" />
+    <result column="acl_module_remark" jdbcType="VARCHAR" property="aclModuleRemark" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="operator_time" jdbcType="TIMESTAMP" property="operatorTime" />
+    <result column="operator_ip" jdbcType="VARCHAR" property="operatorIp" />
+  </resultMap>
+  <insert id="insert" parameterType="org.ngdsx.partybuilding.entity.AclModule">
+    insert into sys_acl_module (acl_module_id, acl_module_name, acl_module_parent_id, 
+      acl_module_level, acl_module_status, acl_module_seq, 
+      acl_module_remark, operator, operator_time, 
+      operator_ip)
+    values (#{aclModuleId,jdbcType=INTEGER}, #{aclModuleName,jdbcType=VARCHAR}, #{aclModuleParentId,jdbcType=INTEGER}, 
+      #{aclModuleLevel,jdbcType=VARCHAR}, #{aclModuleStatus,jdbcType=INTEGER}, #{aclModuleSeq,jdbcType=INTEGER}, 
+      #{aclModuleRemark,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, #{operatorTime,jdbcType=TIMESTAMP}, 
+      #{operatorIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ngdsx.partybuilding.entity.AclModule">
+    insert into sys_acl_module
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aclModuleId != null">
+        acl_module_id,
+      </if>
+      <if test="aclModuleName != null">
+        acl_module_name,
+      </if>
+      <if test="aclModuleParentId != null">
+        acl_module_parent_id,
+      </if>
+      <if test="aclModuleLevel != null">
+        acl_module_level,
+      </if>
+      <if test="aclModuleStatus != null">
+        acl_module_status,
+      </if>
+      <if test="aclModuleSeq != null">
+        acl_module_seq,
+      </if>
+      <if test="aclModuleRemark != null">
+        acl_module_remark,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="operatorTime != null">
+        operator_time,
+      </if>
+      <if test="operatorIp != null">
+        operator_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aclModuleId != null">
+        #{aclModuleId,jdbcType=INTEGER},
+      </if>
+      <if test="aclModuleName != null">
+        #{aclModuleName,jdbcType=VARCHAR},
+      </if>
+      <if test="aclModuleParentId != null">
+        #{aclModuleParentId,jdbcType=INTEGER},
+      </if>
+      <if test="aclModuleLevel != null">
+        #{aclModuleLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="aclModuleStatus != null">
+        #{aclModuleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="aclModuleSeq != null">
+        #{aclModuleSeq,jdbcType=INTEGER},
+      </if>
+      <if test="aclModuleRemark != null">
+        #{aclModuleRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
