@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ngdsx.partybuilding.dao.AclMapper">
+  <resultMap id="BaseResultMap" type="org.ngdsx.partybuilding.entity.Acl">
+    <id column="acl_id" jdbcType="INTEGER" property="aclId" />
+    <result column="acl_code" jdbcType="VARCHAR" property="aclCode" />
+    <result column="acl_name" jdbcType="VARCHAR" property="aclName" />
+    <result column="acl_module_id" jdbcType="INTEGER" property="aclModuleId" />
+    <result column="acl_url" jdbcType="VARCHAR" property="aclUrl" />
+    <result column="acl_type" jdbcType="INTEGER" property="aclType" />
+    <result column="acl_status" jdbcType="INTEGER" property="aclStatus" />
+    <result column="acl_seq" jdbcType="INTEGER" property="aclSeq" />
+    <result column="acl_remark" jdbcType="VARCHAR" property="aclRemark" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="operator_time" jdbcType="TIMESTAMP" property="operatorTime" />
+    <result column="operator_ip" jdbcType="VARCHAR" property="operatorIp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    acl_id, acl_code, acl_name, acl_module_id, acl_url, acl_type, acl_status, acl_seq, 
+    acl_remark, operator, operator_time, operator_ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_acl
+    where acl_id = #{aclId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_acl
+    where acl_id = #{aclId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.ngdsx.partybuilding.entity.Acl">
+    insert into sys_acl (acl_id, acl_code, acl_name, 
+      acl_module_id, acl_url, acl_type, 
+      acl_status, acl_seq, acl_remark, 
+      operator, operator_time, operator_ip
+      )
+    values (#{aclId,jdbcType=INTEGER}, #{aclCode,jdbcType=VARCHAR}, #{aclName,jdbcType=VARCHAR}, 
+      #{aclModuleId,jdbcType=INTEGER}, #{aclUrl,jdbcType=VARCHAR}, #{aclType,jdbcType=INTEGER}, 
+      #{aclStatus,jdbcType=INTEGER}, #{aclSeq,jdbcType=INTEGER}, #{aclRemark,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{operatorTime,jdbcType=TIMESTAMP}, #{operatorIp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.ngdsx.partybuilding.entity.Acl">
+    insert into sys_acl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aclId != null">
+        acl_id,
+      </if>
+      <if test="aclCode != null">
+        acl_code,
+      </if>
+      <if test="aclName != null">
+        acl_name,
+      </if>
+      <if test="aclModuleId != null">
+        acl_module_id,
+      </if>
+      <if test="aclUrl != null">
+        acl_url,
+      </if>
+      <if test="aclType != null">
+        acl_type,
+      </if>
+      <if test="aclStatus != null">
+        acl_status,
+      </if>
+      <if test="aclSeq != null">
+        acl_seq,
+      </if>
+      <if test="aclRemark != null">
+        acl_remark,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="operatorTime != null">
+        operator_time,
+      </if>
+      <if test="operatorIp != null">
+        operator_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aclId != null">
+        #{aclId,jdbcType=INTEGER},
+      </if>
+      <if test="aclCode != null">
+        #{aclCode,jdbcType=VARCHAR},
+      </if>
+      <if test="aclName != null">
+        #{aclName,jdbcType=VARCHAR},
+      </if>
+      <if test="aclModuleId != null">
+        #{aclModuleId,jdbcType=INTEGER},
+      </if>
+      <if test="aclUrl != null">
+        #{aclUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="aclType != null">
+        #{aclType,jdbcType=INTEGER},
+      </if>
+      <if test="aclStatus != null">
+        #{aclStatus,jdbcType=INTEGER},
+      </if>
+      <if test="aclSeq != null">
+        #{aclSeq,jdbcType=INTEGER},
+      </if>
+      <if test="aclRemark != null">
+        #{aclRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ngdsx.partybuilding.entity.Acl">
+    update sys_acl
+    <set>
+      <if test="aclCode != null">
+        acl_code = #{aclCode,jdbcType=VARCHAR},
+      </if>
+      <if test="aclName != null">
+        acl_name = #{aclName,jdbcType=VARCHAR},
+      </if>
+      <if test="aclModuleId != null">
+        acl_module_id = #{aclModuleId,jdbcType=INTEGER},
+      </if>
+      <if test="aclUrl != null">
+        acl_url = #{aclUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="aclType != null">
+        acl_type = #{aclType,jdbcType=INTEGER},
+      </if>
+      <if test="aclStatus != null">
+        acl_status = #{aclStatus,jdbcType=INTEGER},
+      </if>
+      <if test="aclSeq != null">
+        acl_seq = #{aclSeq,jdbcType=INTEGER},
+      </if>
+      <if test="aclRemark != null">
+        acl_remark = #{aclRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorTime != null">
+        operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorIp != null">
+        operator_ip = #{operatorIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where acl_id = #{aclId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ngdsx.partybuilding.entity.Acl">
+    update sys_acl
+    set acl_code = #{aclCode,jdbcType=VARCHAR},
+      acl_name = #{aclName,jdbcType=VARCHAR},
+      acl_module_id = #{aclModuleId,jdbcType=INTEGER},
+      acl_url = #{aclUrl,jdbcType=VARCHAR},
+      acl_type = #{aclType,jdbcType=INTEGER},
+      acl_status = #{aclStatus,jdbcType=INTEGER},
+      acl_seq = #{aclSeq,jdbcType=INTEGER},
+      acl_remark = #{aclRemark,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      operator_time = #{operatorTime,jdbcType=TIMESTAMP},
+      operator_ip = #{operatorIp,jdbcType=VARCHAR}
+    where acl_id = #{aclId,jdbcType=INTEGER}
+  </update>
+</mapper>

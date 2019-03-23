@@ -71,11 +71,12 @@
 	
 	<!-- 5.druid -->
     <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
-    	<property name="slowSqlMills" value="3000" />
+    <!-- StatFilter属性slowSqlMillis用来配置SQL慢的标准，执行时间超过slowSqlMillis的就是慢。 -->
+    	<property name="slowSqlMillis" value="3000" />
     	<property name="logSlowSql" value="true" />
     	<property name="mergeSql" value="true" />
     </bean>
     <bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
     	<property name="dbType" value="mysql" />
-    </bean>
+    </bean>	
 </beans>

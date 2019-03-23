@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.ngdsx.partybuilding.dto.UserExecution;
-import org.ngdsx.partybuilding.entity.User;
+import org.ngdsx.partybuilding.entity.SysUser;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -18,20 +18,20 @@ public interface UserService {
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
-	List<User> getUserList() throws JsonParseException, JsonMappingException,IOException;
+	List<SysUser> getUserList() throws JsonParseException, JsonMappingException,IOException;
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
-	UserExecution addUser(User user);
+	UserExecution addUser(SysUser user);
 	
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
-	UserExecution modifyUser(User user);
+	UserExecution modifyUser(SysUser user);
 	/**
 	 * 
 	 * @param userId

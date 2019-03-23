@@ -2,7 +2,7 @@ package org.ngdsx.partybuilding.dto;
 
 import java.util.List;
 
-import org.ngdsx.partybuilding.entity.User;
+import org.ngdsx.partybuilding.entity.SysUser;
 import org.ngdsx.partybuilding.enums.UserStateEnum;
 
 public class UserExecution {
@@ -16,10 +16,10 @@ public class UserExecution {
 	private int count;
 
 	// 操作的user（增删改用户的时候用）
-	private User user;
+	private SysUser user;
 	
 	// 获取的user列表(查询用户列表的时候用)
-	private List<User> userList;
+	private List<SysUser> userList;
 	
 	public UserExecution() {}
 	
@@ -29,13 +29,13 @@ public class UserExecution {
 		this.stateInfo = stateEnum.getStateInfo();
 	}
 	//用户操作成功时使用的构造器
-	public UserExecution(UserStateEnum stateEnum,User user) {
+	public UserExecution(UserStateEnum stateEnum,SysUser user) {
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo();
 		this.user = user;
 	}
 	//用户操作成功时使用的构造器
-	public UserExecution(UserStateEnum stateEnum,List<User> userList) {
+	public UserExecution(UserStateEnum stateEnum,List<SysUser> userList) {
 		this.state = stateEnum.getState();
 		this.stateInfo = stateEnum.getStateInfo();
 		this.userList = userList;
@@ -65,19 +65,19 @@ public class UserExecution {
 		this.count = count;
 	}
 
-	public User getUser() {
+	public SysUser getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(SysUser user) {
 		this.user = user;
 	}
 
-	public List<User> getUserList() {
+	public List<SysUser> getUserList() {
 		return userList;
 	}
 
-	public void setUserList(List<User> userList) {
+	public void setUserList(List<SysUser> userList) {
 		this.userList = userList;
 	}
 	

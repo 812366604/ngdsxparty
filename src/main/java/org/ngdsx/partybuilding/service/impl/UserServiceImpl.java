@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.ngdsx.partybuilding.dao.UserDao;
+import org.ngdsx.partybuilding.dao.UserMapper;
 import org.ngdsx.partybuilding.dto.UserExecution;
-import org.ngdsx.partybuilding.entity.User;
+import org.ngdsx.partybuilding.entity.SysUser;
 import org.ngdsx.partybuilding.enums.UserStateEnum;
 import org.ngdsx.partybuilding.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,22 +26,22 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private JedisUtil.Keys jedisKeys;
 	@Autowired
-	private UserDao userDao;
+	private UserMapper userDao;
 	
 	private static String USERLISTKEY = "userlist";
 	@Override
-	public List<User> getUserList() throws JsonParseException, JsonMappingException, IOException {
+	public List<SysUser> getUserList() throws JsonParseException, JsonMappingException, IOException {
 		// TODO Auto-generated method stub
 		String key = USERLISTKEY;
-		List<User> userList = null;
+		List<SysUser> userList = null;
 		ObjectMapper mapper = new ObjectMapper();
 		if (!jedisKeys.exists(key)) {
-			userList = userDao.queryUser();
+//			userList = userDao.queryUser();
 			String jsonString = mapper.writeValueAsString(userList);
 			jedisStrings.set(key, jsonString);
 		} else {
 			String jsonString = jedisStrings.get(key);
-			JavaType javaType = mapper.getTypeFactory().constructParametricType(ArrayList.class, User.class);
+			JavaType javaType = mapper.getTypeFactory().constructParametricType(ArrayList.class, SysUser.class);
 			userList = mapper.readValue(jsonString, javaType);
 		}
 		return userList;
@@ -49,12 +49,12 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	@Transactional
-	public UserExecution addUser(User user) {
+	public UserExecution addUser(SysUser user) {
 		// TODO Auto-generated method stub
 		if (user.getUserName() != null && !"".equals(user.getUserName())) {
 			user.setCreatePartyTime(new Date());			
 			try {
-				int effectedNum = userDao.insertUser(user);
+				int effectedNum = userDao.insert(user);
 				if(effectedNum > 0) {
 					String key = USERLISTKEY;
 					if(jedisKeys.exists(key)) {
@@ -75,11 +75,11 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	@Transactional
-	public UserExecution modifyUser(User user) {
+	public UserExecution modifyUser(SysUser user) {
 		// TODO Auto-generated method stub
 		if("".equals(user.getUserId()) && user.getUserId() > 0) {
 			try {
-				int effectedNum = userDao.updateUser(user);
+				int effectedNum = userDao.updateByPrimaryKey(user);
 				if(effectedNum > 0) {
 					String key = USERLISTKEY;
 					if(jedisKeys.exists(key)) {

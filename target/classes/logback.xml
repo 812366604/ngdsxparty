@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <configuration debug="false">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>	
+	<!-- 
 	<appender name="INFO-FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${catalina.base}/webapps/partybuilding/logs/info/info.log</file>
@@ -30,15 +36,20 @@
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{55} -
-				%msg%n
-			</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{55} - %msg%n</pattern>
 		</layout>
 	</appender>
 	<logger name="org.ngdsx.partybuilding" level="DEBUG" additivity="false">
 		<appender-ref ref="ACCESS-FILE" />
 	</logger>
+	 -->
+	<!-- TRACE < DEBUG < INFO < WARN < ERROR -->
+	<!-- 
 	<root level="INFO">
 		<appender-ref ref="INFO-FILE" />
 	</root>
+	 -->
+	<root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
 </configuration>

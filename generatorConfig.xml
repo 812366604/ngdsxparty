@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE generatorConfiguration
+    PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+  <generatorConfiguration>
+      <!--数据库驱动-->
+      <classPathEntry    location="mysql-connector-java-5.1.37.jar"/>
+      <context id="DB2Tables"    targetRuntime="MyBatis3">
+          <commentGenerator>
+             <property name="suppressAllComments" value="true"/>
+         </commentGenerator>
+         <!--数据库链接地址账号密码-->
+         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.253.133:3306/partybuilding?characterEncoding=utf8" userId="root" password="root">
+         </jdbcConnection>
+         <javaTypeResolver>
+             <property name="forceBigDecimals" value="false"/>
+         </javaTypeResolver>
+         <!--生成Model类存放位置-->
+         <javaModelGenerator targetPackage="org.ngdsx.partybuilding.entity" targetProject="D:\eclipse-workspace\ngdsxparty\generator">
+             <property name="enableSubPackages" value="true"/>
+             <property name="trimStrings" value="true"/>
+         </javaModelGenerator>
+         <!--生成映射文件存放位置-->
+         <sqlMapGenerator targetPackage="mapper/" targetProject="D:\eclipse-workspace\ngdsxparty\generator">
+             <property name="enableSubPackages" value="true"/>
+         </sqlMapGenerator>
+         <!--生成Dao类存放位置-->
+         <javaClientGenerator type="XMLMAPPER" targetPackage="org.ngdsx.partybuilding.dao" targetProject="D:\eclipse-workspace\ngdsxparty\generator">
+             <property name="enableSubPackages" value="true"/>
+         </javaClientGenerator>
+         <!--生成对应表及类名-->
+         <table tableName="tb_user_rank_title" domainObjectName="UserRankTitle" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+         <table tableName="sys_acl" domainObjectName="Acl" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+         <table tableName="sys_acl_module" domainObjectName="AclModule" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+         <table tableName="sys_department" domainObjectName="Department" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+         <table tableName="sys_log" domainObjectName="Log" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+         <table tableName="sys_role" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+         <table tableName="sys_role_acl" domainObjectName="RoleAcl" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+         <table tableName="sys_role_user" domainObjectName="RoleUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+         <table tableName="sys_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>         
+     </context>
+ </generatorConfiguration>
