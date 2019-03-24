@@ -13,11 +13,11 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class DepartmentParam {
 
-    private Integer id;
+    private Integer departmentId;
 
     @NotBlank(message = "部门名称不可以为空")
     @Length(max = 15, min = 2, message = "部门名称长度需要在2-15个字之间")
-    private String name;
+    private String departmentName;
 
     private Integer parentId = 0;
 
